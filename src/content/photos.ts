@@ -1,0 +1,21 @@
+/** Descriptive, non-claiming alt text for each supplied photograph. Keys match /public/photos/<key>.jpg. */
+export const PHOTO_ALT: Record<string, string> = {
+  'tank-black-1': 'A black ribbed vertical water storage tank',
+  'tank-black-2': 'A black ribbed vertical water storage tank, taller proportions',
+  'tank-black-3': 'A black ribbed vertical water storage tank, wider proportions',
+  'tank-blue': 'A blue ribbed vertical water storage tank',
+  'basin-mixer': 'A chrome three-piece basin mixer set with two handles and a spout',
+  'warehouse-pallets': 'Boxed tiles stacked on pallets in a warehouse with racking and a forklift behind',
+  'bathroom-suite': 'A modern bathroom with a floor-standing toilet, a floating vanity and a round backlit mirror',
+  'bathroom-shower-heater': 'A bathroom with a glass shower enclosure, a wall-mounted electric water heater and a double vanity',
+  'tiles-lobby': 'A lobby with large grey-veined white marble-effect floor tiles',
+  'tiles-living': 'A living room with large white marble-effect tiles on the floor and wall',
+  'bathroom-moodboard': 'A bathroom concept board with a freestanding bath, a floor-standing toilet, a wall basin and a green and sand colour palette',
+  'showroom': 'A bathroom and kitchen showroom with a freestanding bath, a walk-in shower and kitchen displays',
+  'tank-black-4': 'A black ribbed vertical water storage tank, front view',
+  'tank-black-5': 'A black ribbed vertical water storage tank, front view with a screw-cap lid',
+  'tank-black-6': 'A black ribbed vertical water storage tank with two outlet ports at the base',
+  'chris-portrait': 'A man in glasses, a black cap and a dark suit with a brown patterned tie, seated at a desk with a laptop, wearing a St. Chris Global lapel pin, in an office with warm lighting',
+  'leadership-meeting': 'A man in a dark suit speaking with his hands open to four colleagues seated around a white meeting table with laptops',
+  'basins-double': 'Two arched mirrors above a wooden double vanity with two countertop basins',
+};

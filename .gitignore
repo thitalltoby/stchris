@@ -1,0 +1,12 @@
+node_modules
+.next
+.env
+storage
+src/generated
+*.tsbuildinfo
+playwright-report
+test-results
+next-env.d.ts
+.DS_Store
+.vitest
+_reference

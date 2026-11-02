@@ -1,0 +1,66 @@
+import type { SVGProps } from 'react';
+
+const P: Record<string, React.ReactNode> = {
+  truck: <><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z" /><circle cx="7" cy="17.5" r="1.8" /><circle cx="17" cy="17.5" r="1.8" /></>,
+  anchor: <><circle cx="12" cy="5" r="2" /><path d="M12 7v13M6 12H4a8 8 0 0 0 16 0h-2M8 11h8" /></>,
+  waves: <><path d="M2 8c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2M2 13c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2M2 18c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2" transform="translate(0 -3)" /></>,
+  layers: <><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5" transform="translate(0 -2)" /></>,
+  road: <><path d="M8 3 4 21M16 3l4 18M12 4v3M12 10v3M12 16v3" /></>,
+  ship: <><path d="M3 16 5 11h14l2 5c-2 3-4 3-6 3s-2-1-3-1-1 1-3 1-4 0-6-3zM8 11V6h6v5M10 6V3" /></>,
+  container: <><path d="M3 7h18v10H3zM7 7v10M11 7v10M15 7v10M19 7v10" /></>,
+  arrow: <path d="M4 12h15M13 6l6 6-6 6" />,
+  check: <path d="m4 12.5 5 5L20 6.5" />,
+  menu: <path d="M4 7h16M4 12h16M4 17h16" />,
+  x: <path d="M6 6l12 12M18 6 6 18" />,
+  phone: <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z" />,
+  mail: <><path d="M3 5h18v14H3z" /><path d="m3 6 9 7 9-7" /></>,
+  pin: <><path d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z" /><circle cx="12" cy="9" r="2.5" /></>,
+  shield: <path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z" />,
+  file: <><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v5h5" /></>,
+  user: <><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" /></>,
+  upload: <path d="M12 16V4M7 9l5-5 5 5M4 20h16" />,
+  clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+  search: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></>,
+  chevron: <path d="m9 6 6 6-6 6" />,
+  alert: <><path d="M12 3 2 20h20z" /><path d="M12 10v5M12 18v.5" /></>,
+  download: <path d="M12 4v12M7 11l5 5 5-5M4 20h16" />,
+  edit: <path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4" />,
+  plus: <path d="M12 5v14M5 12h14" />,
+  gauge: <><path d="M4 18a8 8 0 1 1 16 0" /><path d="m12 18 4-6" /></>,
+  list: <path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" />,
+  users: <><circle cx="9" cy="8" r="3.5" /><path d="M2 20c0-3.6 3-6 7-6s7 2.4 7 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2.5.6 4 2.4 4 5" /></>,
+  chart: <path d="M4 20V4M4 20h16M8 16v-5M13 16V8M18 16v-8" />,
+  settings: <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" /></>,
+  plug: <path d="M9 3v5M15 3v5M6 8h12v4a6 6 0 0 1-12 0zM12 18v3" />,
+  log: <><path d="M5 3h14v18H5z" /><path d="M9 8h6M9 12h6M9 16h4" /></>,
+  receipt: <><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" /><path d="M9 8h6M9 12h6" /></>,
+  briefcase: <><path d="M3 8h18v12H3zM9 8V5h6v3M3 13h18" /></>,
+  logout: <path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9" />,
+  book: <><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z" /><path d="M4 19V5M8 7h7M8 11h5" /></>,
+  megaphone: <><path d="M4 10v4h3l8 4V6L7 10z" /><path d="M18 9a4 4 0 0 1 0 6M7 14l1 5h3l-1-4" /></>,
+  globe: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" /></>,
+  calendar: <><path d="M4 6h16v14H4zM4 10h16M8 3v5M16 3v5" /></>,
+  eye: <><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3" /></>,
+  trash: <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" />,
+  image: <><path d="M3 5h18v14H3z" /><circle cx="9" cy="10" r="1.6" /><path d="m3 17 5-4 4 3 3-2 6 4" /></>,
+  video: <><path d="M3 6h13v12H3z" /><path d="m16 10 5-3v10l-5-3" /></>,
+  bell: <path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4" />,
+  send: <path d="M21 3 3 10l7 3 3 7zM10 13l11-10" />,
+  lock: <><path d="M5 11h14v10H5zM8 11V8a4 4 0 0 1 8 0v3" /></>,
+  copy: <><path d="M8 8h12v12H8z" /><path d="M16 8V4H4v12h4" /></>,
+  linkedin: <><path d="M4 4h16v16H4z" /><path d="M8 10v7M8 7v.01M12 17v-7M12 13a3 3 0 0 1 6 0v4" /></>,
+  facebook: <><path d="M4 4h16v16H4z" /><path d="M15 20v-6h2l.5-3H15V9.5c0-1 .5-1.5 1.5-1.5H17.5V5.5H15.5C13.5 5.5 12 6.8 12 9v2H10v3h2v6" /></>,
+  instagram: <><path d="M4 4h16v16H4z" rx="4" /><circle cx="12" cy="12" r="3.6" /><path d="M16.8 7.2v.01" /></>,
+  xsocial: <path d="M4 4l16 16M20 4 4 20" />,
+  whatsapp: <><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8z" /><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z" /></>,
+  grip: <path d="M9 5h.01M9 12h.01M9 19h.01M15 5h.01M15 12h.01M15 19h.01" />,
+  external: <path d="M14 4h6v6M20 4 10 14M18 14v6H4V6h6" />,
+};
+
+export function Icon({ name, size = 20, ...rest }: { name: string; size?: number } & Omit<SVGProps<SVGSVGElement>, 'name'>) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" {...rest}>
+      {P[name] ?? P.file}
+    </svg>
+  );
+}
