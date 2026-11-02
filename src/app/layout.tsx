@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { connection } from 'next/server';
 import './globals.css';
 
 import { getSetting } from '@/server/settings';
@@ -29,6 +30,9 @@ export const viewport: Viewport = { themeColor: '#1c1917', width: 'device-width'
 /** Type: Montserrat for headlines and numerals (closest bundled match to Gotham and Uni Sans), Plus Jakarta Sans for text and controls (closest to TT Firs Neue); both bundled via npm. Licensed brand fonts, if supplied, load from /fonts/faces.css and take priority. */
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Render every page per request: the proxy's CSP nonce only reaches Next.js's scripts in a request-time render,
+  // and pages that read the database cannot be prerendered when the build has no database (as on Render)
+  await connection();
   return (
     <html lang="en">
       <head><link rel="stylesheet" href="/fonts/faces.css" /></head>
