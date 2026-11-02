@@ -1,26 +1,23 @@
-# Render Blueprint (https://render.com/docs/blueprint-spec). Create it with New → Blueprint.
-# Migrations run automatically before each deploy (preDeployCommand). Once, after the first deploy,
-# create the first Super Admin from the web service's Shell:
-#   SEED_ADMIN_EMAIL=you@example.com SEED_ADMIN_PASSWORD='a-long-password-1' npm run db:seed
-# Background jobs run through the "stchris-jobs" cron service, which POSTs to /api/jobs/run every minute.
+# FREE DEMO setup for Render (https://render.com/docs/blueprint-spec). Create it with New → Blueprint.
+# Free instances have no disk, shell or pre-deploy step, so each start runs the migrations and, while
+# SEED_ADMIN_EMAIL is set, the seed (it only adds missing content and sets the admin password).
+# Limits: the site sleeps after ~15 idle minutes (first visit then takes about a minute), uploaded files
+# are lost on every redeploy, email is off, background jobs do not run, and Render deletes free
+# databases after 30 days. For the real site use deploy/render.paid.yaml.
 databases:
   - name: stchris-db
     databaseName: stchris
     user: stchris
-    plan: basic-256mb
+    plan: free
 
 services:
   - type: web
     name: stchris
     runtime: docker
     dockerfilePath: ./deploy/Dockerfile
+    dockerCommand: npm run start:demo
     healthCheckPath: /api/health
-    preDeployCommand: npx prisma migrate deploy
-    plan: starter
-    disk:
-      name: uploads
-      mountPath: /data
-      sizeGB: 10
+    plan: free
     envVars:
       - key: NODE_ENV
         value: production
@@ -33,35 +30,16 @@ services:
       - key: CRON_SECRET
         generateValue: true
       - key: APP_URL
-        value: https://stchris.onrender.com # change when a custom domain is added
+        value: https://stchris.onrender.com # change if Render gives the service a different address
       - key: STORAGE_DIR
         value: /data/storage
       - key: TRUST_PROXY
         value: "true"
-      - key: EMAIL_FROM
+      # No email provider in the demo, so visitors can register without confirming their address
+      - key: AUTH_REQUIRE_EMAIL_VERIFICATION
+        value: "false"
+      # The first Super Admin; Render asks for both when the Blueprint is created
+      - key: SEED_ADMIN_EMAIL
         sync: false
-      # Email provider: set RESEND_API_KEY, or the SMTP_* variables from .env.example instead
-      - key: RESEND_API_KEY
+      - key: SEED_ADMIN_PASSWORD
         sync: false
-      # Optional: a ClamAV daemon reachable from this service
-      - key: CLAMAV_HOST
-        sync: false
-
-  - type: cron
-    name: stchris-jobs
-    runtime: node
-    schedule: "* * * * *"
-    plan: starter
-    buildCommand: "true"
-    startCommand: node scripts/trigger-jobs.cjs
-    envVars:
-      - key: APP_URL
-        fromService:
-          type: web
-          name: stchris
-          envVarKey: APP_URL
-      - key: CRON_SECRET
-        fromService:
-          type: web
-          name: stchris
-          envVarKey: CRON_SECRET

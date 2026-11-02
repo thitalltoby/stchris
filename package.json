@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:demo": "prisma migrate deploy && (test -z \"$SEED_ADMIN_EMAIL\" || npm run db:seed) && next start",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",

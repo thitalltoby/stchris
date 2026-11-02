@@ -73,7 +73,9 @@ Put nginx/Caddy in front for TLS and set `client_max_body_size 60m;` (uploads ar
 
 ## Hosting from the repository (`render.yaml`)
 
-`render.yaml` is a Render Blueprint (New → Blueprint): a web service `stchris` built from `deploy/Dockerfile`, a PostgreSQL database, a disk for uploads, and a cron service `stchris-jobs` that calls `/api/jobs/run` every minute (`scripts/trigger-jobs.cjs`). A separate worker is not used because a Render disk attaches to one service only. Migrations run before each deploy (`preDeployCommand`). Render asks for `EMAIL_FROM` and `RESEND_API_KEY` when the Blueprint is created; `APP_SECRET` and `CRON_SECRET` are generated. After the first deploy, run the seed once from the web service's Shell. The disk, pre-deploy command and Shell need a paid instance type. Any host that can run a Node 22 service or the Docker image and provide PostgreSQL works the same way.
+`render.yaml` is a **free demo** Blueprint: free web service and database, no disk, email off, no background jobs, and `npm run start:demo` runs the migrations and seed on every start. Render deletes free databases after 30 days. The production setup is `deploy/render.paid.yaml` (create the Blueprint with that path, or copy it over `render.yaml`), described here.
+
+`deploy/render.paid.yaml` is a Render Blueprint (New → Blueprint): a web service `stchris` built from `deploy/Dockerfile`, a PostgreSQL database, a disk for uploads, and a cron service `stchris-jobs` that calls `/api/jobs/run` every minute (`scripts/trigger-jobs.cjs`). A separate worker is not used because a Render disk attaches to one service only. Migrations run before each deploy (`preDeployCommand`). Render asks for `EMAIL_FROM` and `RESEND_API_KEY` when the Blueprint is created; `APP_SECRET` and `CRON_SECRET` are generated. After the first deploy, run the seed once from the web service's Shell. The disk, pre-deploy command and Shell need a paid instance type. Any host that can run a Node 22 service or the Docker image and provide PostgreSQL works the same way.
 
 ## Scheduler instead of the worker
 

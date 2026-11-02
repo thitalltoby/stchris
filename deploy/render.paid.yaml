@@ -1,0 +1,69 @@
+# Paid, production setup (always on, persistent uploads disk, background-jobs cron). To use it, create the Blueprint with
+# Blueprint path "deploy/render.paid.yaml", or copy it over render.yaml. render.yaml itself is the free demo setup.
+# Render Blueprint (https://render.com/docs/blueprint-spec).
+# Migrations run automatically before each deploy (preDeployCommand). Once, after the first deploy,
+# create the first Super Admin from the web service's Shell:
+#   SEED_ADMIN_EMAIL=you@example.com SEED_ADMIN_PASSWORD='a-long-password-1' npm run db:seed
+# Background jobs run through the "stchris-jobs" cron service, which POSTs to /api/jobs/run every minute.
+databases:
+  - name: stchris-db
+    databaseName: stchris
+    user: stchris
+    plan: basic-256mb
+
+services:
+  - type: web
+    name: stchris
+    runtime: docker
+    dockerfilePath: ./deploy/Dockerfile
+    healthCheckPath: /api/health
+    preDeployCommand: npx prisma migrate deploy
+    plan: starter
+    disk:
+      name: uploads
+      mountPath: /data
+      sizeGB: 10
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: stchris-db
+          property: connectionString
+      - key: APP_SECRET
+        generateValue: true
+      - key: CRON_SECRET
+        generateValue: true
+      - key: APP_URL
+        value: https://stchris.onrender.com # change when a custom domain is added
+      - key: STORAGE_DIR
+        value: /data/storage
+      - key: TRUST_PROXY
+        value: "true"
+      - key: EMAIL_FROM
+        sync: false
+      # Email provider: set RESEND_API_KEY, or the SMTP_* variables from .env.example instead
+      - key: RESEND_API_KEY
+        sync: false
+      # Optional: a ClamAV daemon reachable from this service
+      - key: CLAMAV_HOST
+        sync: false
+
+  - type: cron
+    name: stchris-jobs
+    runtime: node
+    schedule: "* * * * *"
+    plan: starter
+    buildCommand: "true"
+    startCommand: node scripts/trigger-jobs.cjs
+    envVars:
+      - key: APP_URL
+        fromService:
+          type: web
+          name: stchris
+          envVarKey: APP_URL
+      - key: CRON_SECRET
+        fromService:
+          type: web
+          name: stchris
+          envVarKey: CRON_SECRET
