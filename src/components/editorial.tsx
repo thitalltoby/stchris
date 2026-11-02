@@ -1,3 +1,4 @@
+import { GEEPEE } from '@/content/geepee';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Icon } from './Icon';
@@ -14,16 +15,16 @@ export const Marker = ({ n, label }: { n?: string; label: string }) => (
 );
 
 /** Page opening: marker, large serif headline, lead paragraph and an optional photograph. `title` may contain <em> for the italic emphasis. */
-export function PageHead({ marker, n, title, lead, photo, photoCaption, dark = false, children }: { marker: string; n?: string; title: ReactNode; lead?: ReactNode; photo?: string; photoCaption?: string; dark?: boolean; children?: ReactNode }) {
+export function PageHead({ marker, n, title, lead, photo, photoCaption, children }: { marker: string; n?: string; title: ReactNode; lead?: ReactNode; photo?: string; photoCaption?: string; children?: ReactNode }) {
   return (
-    <section className={dark ? 'bg-umber on-dark' : 'bg-ivory'}>
-      <div className="container-x pt-14 md:pt-24 pb-12 md:pb-20">
+    <section className="bg-white">
+      <div className="container-x pt-20 md:pt-32 pb-20 md:pb-32">
         <div className="rise"><Marker n={n} label={marker} /></div>
-        <div className={photo ? 'hero-grid mt-8 md:mt-12' : 'mt-8 md:mt-12'}>
+        <div className={photo ? 'hero-grid mt-10 md:mt-16' : 'mt-10 md:mt-16'}>
           <div>
             <h1 className="rise max-w-5xl" style={{ ['--rise-delay' as string]: '80ms' }}>{title}</h1>
-            {lead && <div className="rise lead-serif mt-8 md:mt-10 [&_p+p]:mt-4" style={{ ['--rise-delay' as string]: '180ms' }}>{lead}</div>}
-            {children && <div className="rise mt-8 flex flex-wrap gap-3" style={{ ['--rise-delay' as string]: '260ms' }}>{children}</div>}
+            {lead && <div className="rise lead-serif mt-10 md:mt-12 [&_p+p]:mt-4" style={{ ['--rise-delay' as string]: '180ms' }}>{lead}</div>}
+            {children && <div className="rise mt-12 flex flex-wrap gap-4" style={{ ['--rise-delay' as string]: '260ms' }}>{children}</div>}
           </div>
           {photo && (
             <figure className="settle lg:mb-5">
@@ -38,14 +39,13 @@ export function PageHead({ marker, n, title, lead, photo, photoCaption, dark = f
 }
 
 /** Content band with a numbered marker and an optional serif heading. */
-export function Band({ n, marker, title, intro, tone = 'white', children, id }: { n?: string; marker: string; title?: ReactNode; intro?: ReactNode; tone?: 'white' | 'ivory' | 'sand' | 'dark'; children: ReactNode; id?: string }) {
-  const cls = { white: 'bg-white', ivory: 'bg-ivory', sand: 'bg-sand', dark: 'bg-umber on-dark' }[tone];
+export function Band({ n, marker, title, intro, children, id }: { n?: string; marker: string; title?: ReactNode; intro?: ReactNode; tone?: 'white' | 'ivory' | 'sand' | 'dark'; children: ReactNode; id?: string }) {
   return (
-    <section id={id} className={`${cls} section`}>
+    <section id={id} className="bg-white section">
       <div className="container-x">
         <R><Marker n={n} label={marker} /></R>
         {(title || intro) && (
-          <div className="mt-8 md:mt-12 mb-12 md:mb-16 grid gap-6 lg:grid-cols-12 lg:gap-x-16 lg:items-end">
+          <div className="mt-10 md:mt-14 mb-16 md:mb-24 grid gap-8 lg:grid-cols-12 lg:gap-x-20 lg:items-end">
             {title && <R className="lg:col-span-7"><h2>{title}</h2></R>}
             {intro && <R delay={120} className="lg:col-span-5 text-[1.075rem] leading-relaxed opacity-90">{intro}</R>}
           </div>
@@ -89,5 +89,16 @@ export function SocialLinks({ links, className = '' }: { links: { linkedin?: str
         <li key={label}><a href={href} rel="noopener noreferrer" className="inline-grid place-items-center w-11 h-11 border border-current/30 hover:border-current" aria-label={`${label} (opens a new site)`}><Icon name={icon} size={20} /></a></li>
       ))}
     </ul>
+  );
+}
+
+/** The GeePee relationship in one line. Used in the hero and wherever a compact statement of the partnership is needed. */
+export function PartnerBadge({ className = '' }: { className?: string }) {
+  return (
+    <Link href={GEEPEE.hub} className={`partner-badge ${className}`}>
+      <span className="partner-badge-bar" aria-hidden="true" />
+      <span className="partner-badge-text"><strong>Major distributor &amp; strategic partner</strong> of GeePee Water Tanks<span className="hidden sm:inline">, Africa&apos;s No. 1 Water Tank Manufacturer</span></span>
+      <Icon name="arrow" size={18} />
+    </Link>
   );
 }

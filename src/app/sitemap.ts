@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = env.APP_URL.replace(/\/$/, '');
-  const fixed = ['', '/chris-iyoha', '/leadership', '/divisions', '/opportunities', '/journal', '/media-centre', '/catalogue', '/services', ...SECTION_PAGES.map((p) => `/${p.path}`), '/contact', '/privacy', '/terms'];
+  const fixed = ['', '/chris-iyoha', '/leadership', '/divisions', '/opportunities', '/journal', '/media-centre', '/catalogue', '/services', '/partnerships/geepee', ...SECTION_PAGES.map((p) => `/${p.path}`), '/contact', '/privacy', '/terms'];
   const [services, categories, products, divisions, articles, jcats, opps, seoOff] = await Promise.all([
     getVisibleServices(),
     db.category.findMany({ where: { visible: true }, select: { slug: true, updatedAt: true } }),

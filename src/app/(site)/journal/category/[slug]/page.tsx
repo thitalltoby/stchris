@@ -30,7 +30,7 @@ export default async function CategoryPage({ params, searchParams }: { params: P
             <Link href="/journal" className="chip">All</Link>
             {cats.map((k) => <Link key={k.id} href={`/journal/category/${k.slug}`} className="chip" aria-current={k.slug === slug ? 'true' : undefined}>{k.name}</Link>)}
           </nav>
-          {total === 0 ? <p className="serif text-3xl max-w-xl">Nothing in this category yet.</p> : (
+          {total === 0 ? <p className="serif text-2xl max-w-xl">Nothing in this category yet.</p> : (
             <div className="grid gap-x-10 gap-y-14 md:grid-cols-2 lg:grid-cols-3">{items.map((a, i) => <R key={a.id} delay={(i % 3) * 90}><ArticleCard a={a} /></R>)}</div>
           )}
           <div className="mt-14"><Pagination page={page} pages={Math.max(1, Math.ceil(total / PER))} hrefFor={(p) => `/journal/category/${slug}${qs({ page: p > 1 ? p : undefined })}`} /></div>

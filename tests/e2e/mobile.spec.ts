@@ -32,7 +32,7 @@ test.describe('mobile (Pixel 7)', () => {
   });
 
   test('pages do not scroll sideways', async ({ page }) => {
-    for (const path of ['/', '/catalogue', '/catalogue/water-storage-tanks', '/products/vertical-water-storage-tank-black', '/list', '/request', '/services', '/about', '/sweethome', '/how-it-works', '/contact', '/login', '/nowhere']) {
+    for (const path of ['/', '/catalogue', '/catalogue/water-storage-tanks', '/products/vertical-water-storage-tank-black', '/list', '/request', '/services', '/about', '/partnerships/geepee', '/how-it-works', '/contact', '/login', '/nowhere']) {
       await page.goto(path);
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       expect(overflow, `${path} overflows horizontally`).toBeLessThanOrEqual(1);

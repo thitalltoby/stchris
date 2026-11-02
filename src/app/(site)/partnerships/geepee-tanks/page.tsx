@@ -32,7 +32,7 @@ export default async function GeePeePage() {
         <section className="mt-20 -mx-0 max-w-3xl" aria-labelledby="ms-h">
           <Marker n="◆" label="Milestones" />
           <h2 id="ms-h" className="mt-6 !text-[clamp(1.8rem,3vw,2.4rem)]">Milestones <em>along the way.</em></h2>
-          <ol className="timeline mt-10">{milestones.map((m) => <li key={m.id}>{m.period && <p className="mono text-sm text-ember">{m.period}</p>}<h3 className="serif !text-[1.4rem] !font-normal mt-1">{m.title}</h3>{m.body && <p className="mt-2 text-steel">{m.body}</p>}</li>)}</ol>
+          <ol className="timeline mt-10">{milestones.map((m) => <li key={m.id}>{m.period && <p className="mono text-sm text-ember">{m.period}</p>}<h3 className="serif !text-[1.00rem] mt-1">{m.title}</h3>{m.body && <p className="mt-2 text-steel">{m.body}</p>}</li>)}</ol>
         </section>
       )}
       {voices.length > 0 && (

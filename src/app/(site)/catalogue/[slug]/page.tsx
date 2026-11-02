@@ -7,6 +7,7 @@ import { AddRangeLine } from '@/components/AddToList';
 import { Icon } from '@/components/Icon';
 import { getCategoryPage } from '@/server/catalogue';
 import { renderMarkdown } from '@/server/markdown';
+import { PartnerBadge } from '@/components/editorial';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,6 +30,10 @@ export default async function CategoryPage({ params }: Props) {
           <li className="flex items-center gap-2"><Icon name="chevron" size={14} /><span aria-current="page" className="text-charcoal font-medium">{c.name}</span></li>
         </ol>
       </nav>
+
+      {c.slug === 'water-storage-tanks' && (
+        <section className="bg-white border-b border-line"><div className="container-x py-6 md:py-8 flex flex-wrap items-center gap-x-8 gap-y-4"><PartnerBadge /><p className="text-sm text-steel max-w-xl">GeePee tanks are supplied through St. Chris Global. Ask for capacities, quantities and delivery in a written quotation.</p></div></section>
+      )}
 
       {c.products.length > 0 && (
         <Section eyebrow="Products" title={`${c.products.length === 1 ? 'Product' : 'Products'} in this category`}>

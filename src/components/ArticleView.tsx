@@ -21,7 +21,7 @@ export function VideoEmbed({ url, title }: { url: string; title: string }) {
   const v = parseVideoUrl(url);
   if (!v) return null;
   return (
-    <div className="relative aspect-video bg-umber">
+    <div className="relative aspect-video bg-sand">
       <iframe src={v.embed} title={`Video: ${title}`} loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" className="absolute inset-0 w-full h-full border-0" />
     </div>
   );
@@ -39,7 +39,7 @@ export function ArticleView({ a, related = [], preview = false, children }: { a:
       <header className="bg-ivory">
         <div className="container-x pt-12 md:pt-20 pb-10 md:pb-14 max-w-5xl">
           <div className="rise"><Marker label={a.category.name} /></div>
-          <h1 className="rise mt-8 !text-[clamp(2.3rem,5.2vw,4.4rem)]" style={{ ['--rise-delay' as string]: '80ms' }}>{a.title}</h1>
+          <h1 className="rise mt-8 !text-[clamp(1.8rem,3.6vw,3rem)]" style={{ ['--rise-delay' as string]: '80ms' }}>{a.title}</h1>
           {a.subtitle && <p className="rise lead-serif mt-6" style={{ ['--rise-delay' as string]: '160ms' }}>{a.subtitle}</p>}
           <p className="rise mt-8 mono text-sm text-steel" style={{ ['--rise-delay' as string]: '220ms' }}>{a.author.name} · {preview && !a.publishedAt ? 'Not yet published' : fmtDate(a.publishedAt)} · {a.readingMinutes} min read</p>
         </div>
@@ -66,7 +66,7 @@ export function ArticleView({ a, related = [], preview = false, children }: { a:
         </div>
       </div>
       {related.length > 0 && (
-        <section className="bg-sand section-tight">
+        <section className="bg-white border-t border-line section-tight">
           <div className="container-x"><Marker label={`More in ${a.category.name}`} /><div className="mt-10 grid gap-x-10 gap-y-12 md:grid-cols-3">{related.map((r) => <ArticleCard key={r.slug} a={r} />)}</div></div>
         </section>
       )}

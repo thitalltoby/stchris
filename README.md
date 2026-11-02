@@ -1,6 +1,6 @@
 # St. Chris Materials Desk
 
-A buying platform for **St. Chris Global Limited** (building materials, plumbing, bathroom and kitchen solutions, water storage and tiles). It is not a brochure site. A visitor builds a **project list**, sends it for a **written quotation**, and then tracks and accepts that quotation online. Retail customers are pointed to the affiliated storefront, [Sweethome](https://sweethomebathrooms.com).
+A buying platform for **St. Chris Global Limited** (building materials, plumbing, bathroom and kitchen solutions, water storage and tiles). It is not a brochure site. A visitor builds a **project list**, sends it for a **written quotation**, and then tracks and accepts that quotation online.
 
 - **Catalogue** — 11 categories, products with sizes, SKUs and availability, search, and "what we supply" lines that can be added to a list even before a product page exists. The internal price book is never shown publicly.
 - **Project list** — a persistent basket that lives on the server (not in the browser). It follows the visitor from phone to laptop once they sign in, and is copied onto a request when they send it.
@@ -12,7 +12,9 @@ A project list and a request are **not orders**, and the site says so. Prices, a
 
 > **Read first:** [`docs/IMPLEMENTATION_CHECKLIST.md`](docs/IMPLEMENTATION_CHECKLIST.md) says what is built, what is tested and what is not. [`docs/CONTENT_REGISTER.md`](docs/CONTENT_REGISTER.md) lists every fact, image and arrangement St. Chris must confirm before launch. [`docs/OUTSTANDING_ITEMS.md`](docs/OUTSTANDING_ITEMS.md) lists the decisions, credentials and engineering work still open.
 
-Visual identity is taken from the supplied St. Chris logo (orange `#F96D11`, a darker accessible orange `#B4430A` for text, warm charcoal) with TT Firs Neue (licensed; **not bundled**: drop the `.woff2` files into `public/fonts/`, see `public/fonts/README.txt`) and Figtree / IBM Plex as fallbacks.
+Visual identity is taken from the supplied St. Chris logo (orange `#F96D11`, a darker accessible orange `#B4430A` for text, warm charcoal) on a white, spacious layout (no cream or black surfaces; separation comes from whitespace and hairlines) with a geometric sans headline face and a clean humanist sans for text. The brand fonts it is designed for (**TT Firs Neue, Uni Sans, Gotham, Noah**) are licensed, so they are not bundled: drop the web-font files into `public/fonts/` (naming in `public/fonts/README.txt`) and `/fonts/faces.css` switches them on with no code change. Until then the bundled open-source stand-ins **Montserrat** (headlines, closest to Gotham and Uni Sans) and **Plus Jakarta Sans** (text, closest to TT Firs Neue) are used, falling back to the Apple/system font stack.
+
+St. Chris Global is positioned throughout the site as a **major distributor and strategic partner of GeePee Water Tanks** (the line lives in `src/content/geepee.ts`; the overview page is `/partnerships/geepee`).
 
 ## Stack
 

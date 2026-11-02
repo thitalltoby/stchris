@@ -38,7 +38,7 @@ Request details are stored as JSON together with a **snapshot of the field label
 
 ## Pages and routes
 
-Public: `/`, `/catalogue`, `/catalogue/[slug]`, `/products/[slug]`, `/search`, `/list`, `/services`, `/services/[slug]`, `/about`, `/sweethome`, `/how-it-works`, `/contact`, `/privacy`, `/terms`, `/request`, `/request/confirmation/[reference]`, `/login`, `/register`, `/forgot-password`, `/reset-password`, `/verify-email`, `/robots.txt`, `/sitemap.xml`.
+Public: `/`, `/catalogue`, `/catalogue/[slug]`, `/products/[slug]`, `/search`, `/list`, `/services`, `/services/[slug]`, `/about`, `/partnerships/geepee`, `/how-it-works`, `/contact`, `/privacy`, `/terms`, `/request`, `/request/confirmation/[reference]`, `/login`, `/register`, `/forgot-password`, `/reset-password`, `/verify-email`, `/robots.txt`, `/sitemap.xml`.
 
 Portal: `/portal`, `/portal/requests`, `/portal/requests/[id]`, `/portal/quotations/[id]`, `/portal/account`.
 

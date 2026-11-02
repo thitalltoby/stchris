@@ -65,7 +65,7 @@ export function MainNav({ nav, account, listCount = 0 }: { nav: NavNode[]; accou
   return (
     <div ref={wrap} className="contents" onBlur={(e) => { if (wrap.current && !wrap.current.contains(e.relatedTarget as Node | null) && e.relatedTarget) close(); }}>
       {/* Desktop: a row of links and dropdown buttons */}
-      <nav aria-label="Main" className="hidden xl:flex xl:flex-1 xl:justify-center items-center gap-1 text-[0.95rem] font-medium">
+      <nav aria-label="Main" className="hidden xl:flex xl:flex-1 xl:justify-center items-center gap-0.5 text-[0.88rem] 2xl:text-[0.95rem] font-medium">
         {nav.map((n) =>
           n.children ? (
             <div key={n.href} className="relative">

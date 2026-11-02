@@ -13,7 +13,6 @@ Everything on the site that comes from the supplied corporate profile and photog
 | Tagline "Building Better Spaces. Delivering Quality." | Header strip, footer | Profile | Confirm it is current |
 | Vision, mission and values | About (draft body) | Profile | Confirm and edit in *Content → Pages* |
 | Customer segments | Services and About | Profile §8 | Confirm |
-| Relationship to Sweethome | Header, footer, Sweethome page | Profile; storefront at sweethomebathrooms.com | Confirm "affiliated brand" is the correct description, and that St. Chris may link to the storefront |
 
 ## 2. Contact details: none supplied
 
@@ -44,14 +43,14 @@ The profile contains no address, telephone, email, WhatsApp number or opening ho
 | Who made them, and may St. Chris use them commercially? | We were given the files, not their licence |
 | Some look AI-generated or composited (for example the bathroom mood-board and room scenes). Replace them with real photographs of real stock or projects before launch, or label them as illustrative | Honesty to customers. The terms page already says "Some photographs are illustrative" |
 | Product photos show a manufacturer's brand | See GEEPEE above |
-| The showroom image | Confirm it is a real St. Chris or Sweethome showroom. If not, remove it: the site never says it is |
+| The showroom image | Confirm it is a real St. Chris showroom. If not, remove it: the site never says it is |
 
 ## 6. Brand assets
 
 | Item | Note |
 |---|---|
 | Logo | Supplied PNGs are in `public/brand/` (full colour, reversed, emblem, app icon). A vector (SVG) master would be better for print and the quotation PDF |
-| TT Firs Neue | Licensed typeface, **not bundled**. Add the `.woff2` files to `public/fonts/` (see `public/fonts/README.txt`); until then Figtree and IBM Plex are used |
+| Typography | Designed for TT Firs Neue, Uni Sans, Gotham and Noah (Neue Machina dropped at the client's request). All are commercial and **none is bundled**: buy web licences and add the files to `public/fonts/` (see the README there). Until then Montserrat (headlines) and Plus Jakarta Sans (text) are used, both open-source (SIL OFL), then the Apple/system font stack |
 | Colours | `#F96D11` (brand) and `#B4430A` (accessible text colour) were taken from the logo. Confirm against the brand guidelines |
 
 ## 7. Legal
@@ -75,3 +74,8 @@ Years of experience beyond the hedged 2003 history; number of customers, project
 | **Opportunities** | None are pre-published. Staff add the real ones |
 | **Media centre** | Empty until staff add real items |
 | **Company phone, WhatsApp number, address** | Still blank (see section 2). The WhatsApp buttons appear only once a number is entered under Settings → Company |
+| **Homepage wording** (hero lead, "What working with St. Chris means", GeePee blurb, Materials Desk copy) | Written by us from the brief and from claims the site already makes (written quotations, sourcing, reference numbers, importation and distribution). The GeePee blurb repeats only the brief's "long-standing partnership" wording. Chris's name plate, headline, strapline and closing line are the supplied text. Please read the whole page and confirm or edit. Division photographs are the supplied images, so the tank photo on Importation & Distribution is a stand-in until a better one is supplied |
+| **Homepage figures** | "Areas of business" and "product categories" count what is in the system. "2003" is shown only with its "per public company records" caveat until confirmed. "In writing" describes how quotations work, not a statistic |
+| **GeePee positioning** ("major distributor and strategic partner of GeePee Water Tanks, Africa's No. 1 Water Tank Manufacturer") | The role was **supplied by the client**. "Africa's No. 1 Water Tank Manufacturer" is GeePee's own description of itself (geepee.com page title) and is not independently verified. It now appears in the top bar, hero, homepage, footer, navigation, tank catalogue and product pages, the Importation & Distribution division, the FAQ, About page and page metadata. **Before launch obtain GeePee's written confirmation of the distributor and partner status, and permission to use its name, tagline and any logo.** One line (`src/content/geepee.ts`) controls the wording everywhere |
+| **Inspiration-only retail brand** | Per the client's instruction it is not named anywhere on the site (pages, menus, footer, FAQ, seed records, metadata). A unit test fails if it reappears in `src` or `prisma` |
+| **Added photographs** | 14 images supplied on 2 Nov 2026 (boardroom, office, construction, bathroom, container and similar). They look like stock photography: confirm each is licensed for commercial web use. They are used as illustrations only (alt text does not say they are St. Chris staff, sites or customers). A street-vendor photo with Milo branding was **not used** (third-party brand) |

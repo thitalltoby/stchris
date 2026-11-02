@@ -11,7 +11,7 @@ export default async function CataloguePage() {
   const groups = await getCategoriesByGroup();
   return (
     <>
-      <PageHero eyebrow="Catalogue" title="Everything for the build, the bathroom and the finish" photo="bathroom-suite">
+      <PageHero eyebrow="Catalogue" title="Everything for the build, the bathroom and the finish" photo="bathroom-stone">
         <p>Browse by category and add what you need to your project list. We confirm availability and price in a written quotation. If you cannot see an item, describe it and we will source it.</p>
         <form action="/search" className="mt-7 flex max-w-xl gap-2" role="search">
           <label htmlFor="cat-q" className="sr-only">Search the catalogue</label>

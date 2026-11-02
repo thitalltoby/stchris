@@ -20,14 +20,14 @@ export default async function OpportunitiesPage() {
   const deptName = (k: string) => depts.find((d) => d.key === k)?.label ?? k;
   return (
     <>
-      <PageHead marker="Opportunities" n="01" title={<>Every route in <em>is a real one.</em></>} lead={<p>Each form below goes to the department that handles it. You get a reference number straight away, and you can follow the enquiry in your account.</p>} />
+      <PageHead marker="Opportunities" n="01" photo="executive-laptop" title={<>Every route in <em>is a real one.</em></>} lead={<p>Each form below goes to the department that handles it. You get a reference number straight away, and you can follow the enquiry in your account.</p>} />
       {open.length > 0 && (
         <Band marker="Open now" tone="white" title={<>Current <em>openings.</em></>}>
-          <ul className="border-t border-line">{open.map((o) => <li key={o.id}><Link href={`/opportunities/${o.slug}`} className="group row-link md:grid-cols-[14rem_1fr_auto] md:items-center"><span className="tag w-fit">{OPPORTUNITY_KINDS[o.kind]}</span><span><span className="serif text-xl block">{o.title}</span><span className="text-steel text-sm">{o.summary}{o.location ? ` · ${o.location}` : ''}</span></span><span className="row-arrow" aria-hidden="true"><Icon name="arrow" size={20} /></span></Link></li>)}</ul>
+          <ul className="border-t border-line">{open.map((o) => <li key={o.id}><Link href={`/opportunities/${o.slug}`} className="group row-link md:grid-cols-[14rem_1fr_auto] md:items-center"><span className="tag w-fit">{OPPORTUNITY_KINDS[o.kind]}</span><span><span className="serif text-lg block">{o.title}</span><span className="text-steel text-sm">{o.summary}{o.location ? ` · ${o.location}` : ''}</span></span><span className="row-arrow" aria-hidden="true"><Icon name="arrow" size={20} /></span></Link></li>)}</ul>
         </Band>
       )}
       {GROUPS.map((g, gi) => (
-        <section key={g.id} id={g.id} className={`${gi % 2 === 0 ? 'bg-ivory' : 'bg-white'} section scroll-mt-24`}>
+        <section key={g.id} id={g.id} className="bg-white section scroll-mt-24">
           <div className="container-x">
             <R><p className="marker"><b>{g.n}</b><span>{g.id}</span></p></R>
             <div className="mt-8 md:mt-12 mb-12 grid gap-6 lg:grid-cols-12 lg:gap-x-16 lg:items-end"><R className="lg:col-span-7"><h2>{g.title}</h2></R><R delay={100} className="lg:col-span-5 opacity-90">{g.intro}</R></div>
@@ -35,7 +35,7 @@ export default async function OpportunitiesPage() {
               {services.filter((s) => s.audience === g.id).map((s) => (
                 <li key={s.id}>
                   <Link href={`/request?service=${s.slug}`} className="group row-link !border-t-0 grid-cols-[1fr_auto] items-center">
-                    <span><span className="block serif text-[1.35rem]">{s.name}</span><span className="block mt-1 text-steel text-[0.95rem] max-w-md">{s.summary}</span><span className="mt-2 block mono text-xs text-steel">Goes to: {deptName(s.department)}</span></span>
+                    <span><span className="block serif text-[1.05rem]">{s.name}</span><span className="block mt-1 text-steel text-[0.95rem] max-w-md">{s.summary}</span><span className="mt-2 block mono text-xs text-steel">Goes to: {deptName(s.department)}</span></span>
                     <span className="row-arrow" aria-hidden="true"><Icon name="arrow" size={20} /></span>
                   </Link>
                 </li>

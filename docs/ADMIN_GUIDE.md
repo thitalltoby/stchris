@@ -56,7 +56,7 @@ Staff can record them against the customer (*Customers → company → note*) an
 **Services** lists the ways a customer can ask: *Quote my project list*, *Project and bulk supply*, *Source something specific*, *Open a trade account*, *Dealer or reseller partnership*, *Supplier or manufacturer introduction* and *Ask us a question*. Each has its own questions, which you can add to, reorder, hide or make required. The tick **Carries a project list** decides whether the form shows the customer's list step (and refuses an empty one). Changing a form never changes requests already sent: their question labels are stored with them.
 
 ## Website content
-**Content** holds the company pages (About, Sweethome, How quotations work), FAQs, the company facts register and the **Photos** library. Pages show draft wording written from the corporate profile until you edit them; *Reset* brings the draft back.
+**Content** holds the company pages (About, How quotations work), FAQs, the company facts register and the **Photos** library. Pages show draft wording written from the corporate profile until you edit them; *Reset* brings the draft back.
 
 Photos are chosen from the library (or the supplied set) wherever a picture is needed: categories, products, request types and page headers. A photo that is in use cannot be deleted. Always write a real description (it is read aloud to people using screen readers).
 

@@ -17,7 +17,7 @@ export default async function JournalPage({ searchParams }: { searchParams: Prom
   const grid = lead ? items.slice(1) : items;
   return (
     <>
-      <PageHead marker="The journal" n="01" title={<>Ideas on leadership, enterprise <em>and partnership.</em></>} lead={<p>Written by Chris Iyoha and the St. Chris team.</p>} />
+      <PageHead marker="The journal" n="01" photo="office-shelving" title={<>Ideas on leadership, enterprise <em>and partnership.</em></>} lead={<p>Written by Chris Iyoha and the St. Chris team.</p>} />
       <section className="bg-white section-tight">
         <div className="container-x">
           <nav aria-label="Categories" className="flex flex-wrap gap-2 mb-6">
@@ -33,7 +33,7 @@ export default async function JournalPage({ searchParams }: { searchParams: Prom
 
           {total === 0 ? (
             <div className="border-t border-line py-16 max-w-xl">
-              <p className="serif text-3xl">{filtered ? 'Nothing matches that.' : 'The first articles are on their way.'}</p>
+              <p className="serif text-2xl">{filtered ? 'Nothing matches that.' : 'The first articles are on their way.'}</p>
               <p className="mt-4 text-steel">{filtered ? 'Try another word, or browse all articles.' : 'Check back soon, or follow St. Chris on social media for new writing as it is published.'}</p>
             </div>
           ) : (

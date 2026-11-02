@@ -1,13 +1,21 @@
-TT Firs Neue (TypeType) is a licensed typeface and is not included in this project.
+LICENSED BRAND FONTS (optional)
 
-To switch the headings to it, add the licensed web-font files here, named exactly:
+The site is designed around these families:
+  Headlines and numerals:  Gotham, Uni Sans, TT Firs Neue, Noah
+  Text (paragraphs, labels, controls):  TT Firs Neue, Uni Sans, Gotham, Noah
 
-  TTFirsNeue-Regular.woff2    (400)
-  TTFirsNeue-Medium.woff2     (500)
-  TTFirsNeue-DemiBold.woff2   (600)
-  TTFirsNeue-Bold.woff2       (700)
-  TTFirsNeue-ExtraBold.woff2  (800)
+None of them can be bundled without a licence that covers web use. Until you add files, the site uses
+open-source stand-ins that sit close to them: Montserrat (headlines, closest to Gotham and Uni Sans) and
+Plus Jakarta Sans (text, closest to TT Firs Neue).
 
-Headings and buttons use 700 and 800. Any file that is missing is skipped. No code change is needed;
-rebuild/restart and the site uses it automatically. Until then headings fall back to Figtree.
-Convert .otf/.ttf to .woff2 with:  pyftsubset Font.otf --flavor=woff2 --unicodes="*" --output-file=TTFirsNeue-Bold.woff2
+To switch a family on, buy a web licence, then copy the web-font files into this folder, named
+<Family>-<Weight>.woff2, for example:
+
+  TTFirsNeue-Regular.woff2    TTFirsNeue-Medium.woff2    TTFirsNeue-Bold.woff2
+  UniSans-Book.woff2          UniSans-Heavy.woff2
+  Gotham-Book.woff2           Gotham-Medium.woff2        Gotham-Bold.woff2
+  Noah-Regular.woff2          Noah-Bold.woff2
+
+Weight words understood: Light, Regular, Book, Medium, Semibold, Bold, Extrabold, Ultrabold, Heavy, Black
+(add "Italic" at the end for italics, e.g. Gotham-BookItalic.woff2). The stylesheet at /fonts/faces.css lists
+whatever is in this folder, so nothing needs restarting or rebuilding. Check the file formats your licence allows.

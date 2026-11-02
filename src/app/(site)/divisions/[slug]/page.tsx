@@ -37,25 +37,25 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <R className="lg:col-span-7"><div className="prose-ed" dangerouslySetInnerHTML={{ __html: renderMarkdown(d.description) }} /></R>
           <R delay={100} className="lg:col-span-5">
-            {offerings.length > 0 && <><h3 className="serif !text-[1.4rem] !font-normal">Product and service lines</h3><ul className="mt-4 flex flex-wrap gap-2">{offerings.map((o) => <li key={o} className="chip">{o}</li>)}</ul></>}
+            {offerings.length > 0 && <><h3 className="serif !text-[1.00rem]">Product and service lines</h3><ul className="mt-4 flex flex-wrap gap-2">{offerings.map((o) => <li key={o} className="chip">{o}</li>)}</ul></>}
             {highlights.length > 0 && <ul className="mt-8 space-y-3 border-t border-line pt-6">{highlights.map((h) => <li key={h} className="flex gap-3"><span className="text-ember mt-1"><Icon name="check" size={18} /></span><span>{h}</span></li>)}</ul>}
           </R>
         </div>
       </Band>
 
       {mine.length > 0 && (
-        <Band n="02" marker="Product categories" tone="ivory" title={<>Browse <em>the range.</em></>}>
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{mine.map((c) => <li key={c.id}><CategoryCard c={c} /></li>)}</ul>
+        <Band n="02" marker="Product categories" title={<>Browse <em>the range.</em></>}>
+          <ul className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">{mine.map((c) => <li key={c.id}><CategoryCard c={c} /></li>)}</ul>
         </Band>
       )}
 
-      <section className="bg-umber on-dark section">
+      <section className="bg-white section">
         <div className="container-x grid gap-8 lg:grid-cols-[1.4fr_1fr] items-center">
-          <R><h2>Ready to <em>start?</em></h2><p className="mt-4 text-white/80 max-w-xl text-lg">Send an enquiry to this division. It goes to the right team, you get a reference number, and you can follow it in your account.</p></R>
+          <R><h2>Ready to <em>start?</em></h2><p className="mt-6 text-[#3b3e44] max-w-xl text-lg leading-relaxed">Send an enquiry to this division. It goes to the right team, you get a reference number, and you can follow it in your account.</p></R>
           <R delay={100} className="flex flex-wrap gap-3 lg:justify-end">
             {d.serviceSlug && <Link href={`/request?service=${d.serviceSlug}`} className="btn btn-primary">Send an enquiry</Link>}
-            <WhatsAppButton number={wa} message={`Hello St. Chris, I would like to ask about ${d.name}.`} where={`division:${d.slug}`} className="btn btn-ghost-light" />
-            <Link href="/opportunities" className="btn btn-ghost-light">All ways to work with us</Link>
+            <WhatsAppButton number={wa} message={`Hello St. Chris, I would like to ask about ${d.name}.`} where={`division:${d.slug}`} className="btn btn-outline" />
+            <Link href="/opportunities" className="btn btn-outline">All ways to work with us</Link>
           </R>
         </div>
       </section>

@@ -15,7 +15,6 @@ What is still open. Nothing here is hidden in the software: where something is m
 | A7 | Make staff two-factor sign-in mandatory? | Optional per user |
 | A8 | Whether trade accounts carry negotiated price lists. Not built: every price is set per quotation | Quotations are priced line by line |
 | A9 | Who is notified of new requests and approvals | Falls back to Super Admins and Operations Admins |
-| A10 | The relationship wording for Sweethome, and whether the retail storefront should link back here | Header strip and footer link out |
 
 ## B. Content and permissions to supply or confirm
 
@@ -32,7 +31,8 @@ Every connector is built and is switched on from **Integrations** in the console
 | Analytics | A Plausible domain or GA4 ID | Off, no cookie banner |
 | CRM, accounting, delivery and dispatch, stock and inventory, documents | The system, API credential, and the endpoint and field mapping | Built-in CRM only |
 | ClamAV | A running ClamAV daemon and `CLAMAV_HOST` | Built-in file checks only |
-| TT Firs Neue | The licensed `.woff2` files in `public/fonts/` | Figtree is used for headings |
+| Brand fonts | Web licences and files for TT Firs Neue, Uni Sans, Gotham or Noah, in `public/fonts/` | Montserrat and Plus Jakarta Sans stand-ins are used |
+| GeePee confirmation | Written confirmation of the distributor / strategic-partner role and permission to use GeePee's name and tagline | Wording is as supplied by the client |
 | Hosting | Server or platform, domain, TLS, backup storage | See `DEPLOYMENT.md` and `render.yaml` |
 
 ## D. Engineering work remaining

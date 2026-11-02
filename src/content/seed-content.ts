@@ -13,15 +13,15 @@ export interface SeedCategory {
 
 export const CATEGORIES: SeedCategory[] = [
   {
-    slug: 'building-materials', name: 'Building materials and construction supplies', groupLabel: 'Building & plumbing', sortOrder: 1, imageKey: 'warehouse-pallets',
+    slug: 'building-materials', name: 'Building materials and construction supplies', groupLabel: 'Building & plumbing', sortOrder: 1, imageKey: 'site-rebar',
     summary: 'General building materials, construction accessories and related supplies for residential, commercial and industrial work.',
     description: 'Supplies that support residential, commercial and industrial construction, renovation and property development, for contractors, retailers, developers and individual customers.\n\nTell us what the job needs. If a line is not listed here, add it to your project list in your own words and we will source it.',
     range: ['General building materials', 'Construction accessories', 'Selected architectural and finishing materials', 'Other construction-related supplies'],
   },
   {
     slug: 'water-storage-tanks', name: 'Water storage tanks', groupLabel: 'Building & plumbing', sortOrder: 2, imageKey: 'tank-black-1',
-    summary: 'Water storage tanks for homes, sites and developments.',
-    description: 'Water storage tanks form part of our building materials range. Tell us the capacity you need and where it will be used, and we confirm the available sizes, price and delivery in a written quotation.',
+    summary: "GeePee water storage tanks, supplied by St. Chris Global, major distributor and strategic partner of GeePee Water Tanks.",
+    description: "St. Chris Global is a major distributor and strategic partner of GeePee Water Tanks, Africa's No. 1 Water Tank Manufacturer. Tell us the capacity you need and where it will be used, and we confirm the available sizes, price and delivery in a written quotation. Dealers, contractors and developers can also ask about bulk and project supply.",
     range: ['Water storage tanks'],
   },
   {
@@ -43,13 +43,13 @@ export const CATEGORIES: SeedCategory[] = [
     range: ['Electric water heaters'],
   },
   {
-    slug: 'sanitary-ware', name: 'Sanitary ware: toilets, basins and vanities', groupLabel: 'Bathroom & kitchen', sortOrder: 6, imageKey: 'bathroom-suite',
+    slug: 'sanitary-ware', name: 'Sanitary ware: toilets, basins and vanities', groupLabel: 'Bathroom & kitchen', sortOrder: 6, imageKey: 'bathroom-stone',
     summary: 'Water closets, wash basins and bathroom vanities that combine function, durability and contemporary design.',
     description: 'Bathroom products and sanitary ware for homeowners, interior designers, contractors, hospitality businesses and property developers.',
     range: ['Water closets and toilet systems', 'Wash basins and bathroom sinks', 'Bathroom vanities and cabinets'],
   },
   {
-    slug: 'baths-and-showers', name: 'Baths, shower enclosures and shower systems', groupLabel: 'Bathroom & kitchen', sortOrder: 7, imageKey: 'bathroom-moodboard',
+    slug: 'baths-and-showers', name: 'Baths, shower enclosures and shower systems', groupLabel: 'Bathroom & kitchen', sortOrder: 7, imageKey: 'shower-gold',
     summary: 'Bathtubs, shower enclosures, shower systems and finishing products.',
     description: 'Solutions for modern bathrooms, from a single renovation to a full development.',
     range: ['Bathtubs and shower enclosures', 'Shower systems and accessories', 'Shower mixers', 'Bathroom fittings and finishing products'],
@@ -73,7 +73,7 @@ export const CATEGORIES: SeedCategory[] = [
     range: ['Ceramic tiles', 'Porcelain tiles', 'Floor and wall tiles', 'Decorative surfaces'],
   },
   {
-    slug: 'interior-finishing', name: 'Interior finishing and architectural accessories', groupLabel: 'Tiles & finishing', sortOrder: 11, imageKey: 'tiles-living',
+    slug: 'interior-finishing', name: 'Interior finishing and architectural accessories', groupLabel: 'Tiles & finishing', sortOrder: 11, imageKey: 'bedroom-interior',
     summary: 'Interior finishing materials and selected architectural accessories.',
     description: 'Finishing materials that complete a space, for developers, designers and contractors.',
     range: ['Interior finishing materials', 'Selected architectural accessories'],
@@ -81,7 +81,7 @@ export const CATEGORIES: SeedCategory[] = [
 ];
 
 export const BRANDS = [
-  { slug: 'geepee', name: 'GEEPEE', note: 'The name appears on the supplied water-tank photographs. Confirm that St. Chris is an authorised distributor, and that the brand may be shown, before this goes live.' },
+  { slug: 'geepee', name: 'GeePee', note: "GeePee Water Tanks (GeePee Group), Africa's No. 1 Water Tank Manufacturer. St. Chris Global is positioned as a major distributor and strategic partner (client-supplied). Obtain GeePee's written confirmation of the role and permission to use its name, tagline and any logo before launch.", visible: true },
 ];
 
 export interface SeedProduct {
@@ -148,7 +148,7 @@ export const SERVICES: SeedService[] = [
     ],
   },
   {
-    slug: 'project-bulk-supply', name: 'Project and bulk supply', pillar: 'Projects', icon: 'briefcase', imageKey: 'tiles-living', sortOrder: 2, acceptsItems: true,
+    slug: 'project-bulk-supply', name: 'Project and bulk supply', pillar: 'Projects', icon: 'briefcase', imageKey: 'site-framing', sortOrder: 2, acceptsItems: true,
     summary: 'Structured supply for developments, hospitality fit-outs and institutional or corporate buyers.',
     description: 'For project-based and bulk requirements: residential and commercial developments, hotels and serviced apartments, offices and facilities. Attach a bill of quantities or schedule, add any lines you already know from the catalogue, and tell us the phasing.\n\nWe respond with a quotation; if the project is phased, tell us the phasing and we will say how it can be quoted.',
     highlights: ['Bill of quantities welcome', 'Tell us the phasing', 'One point of contact'],
@@ -164,7 +164,7 @@ export const SERVICES: SeedService[] = [
     ],
   },
   {
-    slug: 'source-a-product', name: 'Source something specific', pillar: 'Sourcing', icon: 'search', imageKey: 'showroom', sortOrder: 3, acceptsItems: false,
+    slug: 'source-a-product', name: 'Source something specific', pillar: 'Sourcing', icon: 'search', imageKey: 'office-laptops', sortOrder: 3, acceptsItems: false,
     summary: 'Tell us what you are looking for and we will source it, locally or through importation.',
     description: 'Sourcing and importation are part of what St. Chris does: international product sourcing, supplier identification and procurement coordination. If you cannot find an item in the catalogue, describe it here with a photo, a model number or a link, and we will tell you what we can source.',
     highlights: ['Local and international sourcing', 'Photos, links and datasheets welcome', 'No obligation'],
@@ -180,7 +180,7 @@ export const SERVICES: SeedService[] = [
     ],
   },
   {
-    slug: 'trade-account', name: 'Open a trade account', pillar: 'Accounts', icon: 'users', imageKey: 'bathroom-shower-heater', sortOrder: 4, acceptsItems: false,
+    slug: 'trade-account', name: 'Open a trade account', pillar: 'Accounts', icon: 'users', imageKey: 'executive-desk', sortOrder: 4, acceptsItems: false,
     summary: 'For retailers, contractors, developers, designers, plumbers, hospitality and corporate buyers who buy regularly.',
     description: 'A trade account suits businesses that buy on a regular basis: building materials retailers, contractors, property developers, interior designers and architects, plumbing professionals, hospitality businesses and corporate buyers.\n\nTell us about your business and what you expect to buy. We review each application and contact you about terms; applying does not commit either side.',
     highlights: ['Saved project lists and reorders', 'Quotations accepted online', 'Request history in one place'],
@@ -195,7 +195,7 @@ export const SERVICES: SeedService[] = [
     ],
   },
   {
-    slug: 'dealer-partnership', name: 'Dealer or reseller partnership', pillar: 'Partnerships', icon: 'briefcase', imageKey: 'tiles-lobby', sortOrder: 5, acceptsItems: false,
+    slug: 'dealer-partnership', name: 'Dealer or reseller partnership', pillar: 'Partnerships', icon: 'briefcase', imageKey: 'boardroom-team', sortOrder: 5, acceptsItems: false,
     summary: 'For shops and distributors interested in carrying our product ranges.',
     description: 'We are building relationships with retailers, dealers and distributors to improve market access and product availability. Tell us about your outlet and which categories interest you, and the team will get in touch.',
     highlights: ['Wholesale and bulk supply', 'Dealer and reseller arrangements', 'Selected categories or the full range'],
@@ -208,7 +208,7 @@ export const SERVICES: SeedService[] = [
     ],
   },
   {
-    slug: 'supplier-introduction', name: 'Supplier or manufacturer introduction', pillar: 'Partnerships', icon: 'truck', imageKey: 'warehouse-pallets', sortOrder: 6, acceptsItems: false,
+    slug: 'supplier-introduction', name: 'Supplier or manufacturer introduction', pillar: 'Partnerships', icon: 'truck', imageKey: 'container-trailer', sortOrder: 6, acceptsItems: false,
     summary: 'For manufacturers and suppliers who want to be considered for the Nigerian market.',
     description: 'St. Chris connects manufacturers and suppliers with the Nigerian market through sourcing, procurement coordination and structured distribution. Introduce your products and the team will respond if there is a fit.',
     highlights: ['Supplier identification and engagement', 'Importation and procurement coordination', 'Wholesale and project channels'],
@@ -241,7 +241,7 @@ export const FAQS = [
   { question: 'Do I need an account?', answer: 'No. You can build a list and send it without one. An account keeps your lists between visits and devices, shows the status of your requests, lets you accept or decline quotations online and lets you reorder from past requests.' },
   { question: 'What if I cannot find an item in the catalogue?', answer: 'Add it to your project list in your own words, or use “Source something specific”. Sourcing and importation are part of what St. Chris does.' },
   { question: 'Who do you supply?', answer: 'Individuals and homeowners, retailers and dealers, contractors, property developers, interior designers and architects, plumbing professionals, hospitality businesses and corporate or institutional buyers.' },
-  { question: 'What is Sweethome?', answer: 'Sweethome is an affiliated brand of St. Chris Global focused on premium bathroom and kitchen products. It has its own online storefront at sweethomebathrooms.com, which suits retail purchases.' },
+  { question: 'Is St. Chris Global connected to GeePee Water Tanks?', answer: "Yes. St. Chris Global is a major distributor and strategic partner of GeePee Water Tanks, Africa's No. 1 Water Tank Manufacturer. Ask for GeePee tanks in a quotation, or contact us about dealer and project supply." },
   { question: 'How long does a reply take?', answer: 'We aim to review every request promptly, but we have not published a fixed response time. Quote your reference number if you need to chase.' },
 ];
 
@@ -262,5 +262,5 @@ export const SEGMENTS = [
   { name: 'Plumbing professionals', text: 'Plumbing materials, fittings, water heating products and installation accessories.', to: '/catalogue/plumbing-pipes-and-fittings', cta: 'Plumbing range' },
   { name: 'Retailers, dealers and distributors', text: 'Wholesale supplies and distribution partnerships for building materials merchants and independent dealers.', to: '/services/dealer-partnership', cta: 'Dealer partnership' },
   { name: 'Hospitality and corporate buyers', text: 'Bathroom, kitchen and utility products for hotels, serviced apartments, offices and facilities.', to: '/services/project-bulk-supply', cta: 'Project and bulk supply' },
-  { name: 'Homeowners and individuals', text: 'Products for construction, renovation and home improvement. For retail purchases, Sweethome is our consumer-facing storefront.', to: '/sweethome', cta: 'About Sweethome' },
+  { name: 'Homeowners and individuals', text: 'Products for construction, renovation and home improvement, quoted in writing whatever the size of the job.', to: '/services/materials-quotation', cta: 'Quote my project list' },
 ];

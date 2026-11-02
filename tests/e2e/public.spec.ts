@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-const PAGES = ['/', '/catalogue', '/catalogue/water-storage-tanks', '/products/vertical-water-storage-tank-black', '/search?q=tank', '/services', '/services/materials-quotation', '/about', '/sweethome', '/how-it-works', '/contact', '/list', '/request', '/login', '/register', '/forgot-password', '/privacy', '/terms'];
+const PAGES = ['/', '/catalogue', '/catalogue/water-storage-tanks', '/products/vertical-water-storage-tank-black', '/search?q=tank', '/services', '/services/materials-quotation', '/about', '/partnerships/geepee', '/how-it-works', '/contact', '/list', '/request', '/login', '/register', '/forgot-password', '/privacy', '/terms'];
 
 test.describe('public site', () => {
   for (const path of PAGES) {
@@ -56,8 +56,37 @@ test.describe('public site', () => {
     await page.getByRole('banner').getByRole('link', { name: /Project list/ }).click();
     await expect(page).toHaveURL(/\/list$/);
     await page.goto('/');
-    await page.getByRole('contentinfo').getByRole('link', { name: 'Sweethome' }).first().click({ trial: true });
-    await expect(page.getByRole('contentinfo').getByRole('link', { name: 'Sweethome' }).first()).toHaveAttribute('href', 'https://sweethomebathrooms.com');
+    await page.getByRole('contentinfo').getByRole('link', { name: /Major distributor/ }).first().click({ trial: true });
+    await expect(page.getByRole('contentinfo').getByRole('link', { name: /Major distributor/ }).first()).toHaveAttribute('href', '/partnerships/geepee');
+  });
+
+  test('the GeePee partnership is stated on the home page, in the header and footer, and on its own page', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('banner').getByRole('link', { name: /Major distributor & strategic partner of GeePee Water Tanks/ })).toBeVisible();
+    await expect(page.getByRole('main').getByRole('link', { name: /Major distributor & strategic partner/ }).first()).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: /Major distributor of GeePee Water Tanks/ })).toBeVisible();
+    await page.goto('/partnerships/geepee');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Major distributor of GeePee Water Tanks');
+    await expect(page.getByText("Africa's No. 1 Water Tank Manufacturer").first()).toBeVisible();
+    await page.goto('/catalogue/water-storage-tanks');
+    await expect(page.getByRole('main').getByRole('link', { name: /Major distributor/ })).toBeVisible();
+  });
+
+  test('Sweethome appears nowhere on the public site', async ({ page, request }) => {
+    for (const path of ['/', '/about', '/divisions', '/divisions/bathroom-and-kitchen', '/catalogue', '/services', '/contact', '/how-it-works', '/opportunities', '/partnerships/geepee']) {
+      const html = await (await request.get(path)).text();
+      expect(html.toLowerCase(), `${path} mentions Sweethome`).not.toMatch(/sweet ?home/);
+    }
+    expect((await request.get('/sweethome')).status()).toBe(404);
+    const sitemap = await (await request.get('/sitemap.xml')).text();
+    expect(sitemap.toLowerCase()).not.toContain('sweethome');
+    void page;
+  });
+
+  test('licensed-font stylesheet is served and empty until font files are added', async ({ request }) => {
+    const res = await request.get('/fonts/faces.css');
+    expect(res.status()).toBe(200);
+    expect(res.headers()['content-type']).toContain('text/css');
   });
 
   test('security headers are present', async ({ request }) => {

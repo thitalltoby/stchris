@@ -8,6 +8,7 @@ import { AddToList } from '@/components/AddToList';
 import { Icon } from '@/components/Icon';
 import { getProductPage } from '@/server/catalogue';
 import { renderMarkdown } from '@/server/markdown';
+import { PartnerBadge } from '@/components/editorial';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -45,6 +46,7 @@ export default async function ProductPage({ params }: Props) {
             <p className="eyebrow">{p.category.name}</p>
             <h1 className="!text-[clamp(1.9rem,3.6vw,2.9rem)] mt-3">{p.name}</h1>
             {p.brand?.visible && <p className="mt-2 text-steel">Brand: <strong className="text-charcoal">{p.brand.name}</strong></p>}
+            {p.brand?.slug === 'geepee' && <div className="mt-4"><PartnerBadge /></div>}
             <p className="lead mt-5">{p.summary}</p>
             {p.highlights.length > 0 && (
               <ul className="mt-6 grid gap-2.5">

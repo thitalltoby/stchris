@@ -36,7 +36,8 @@ test.describe('new public pages', () => {
     const res = await page.goto('/partnerships/geepee-tanks');
     expect(res?.status()).toBe(404);
     await page.goto('/');
-    await expect(page.getByRole('link', { name: /GeePee/ })).toHaveCount(0);
+    // The partnership overview is always public; only the long-form story stays unlinked until it is published.
+    await expect(page.locator('a[href="/partnerships/geepee-tanks"]')).toHaveCount(0);
   });
 
   test('the journal feed and sitemap are served, and the sitemap lists divisions', async ({ request }) => {

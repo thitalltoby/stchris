@@ -18,7 +18,7 @@ export async function generateMetadata() {
 }
 
 export default async function ChrisPage() {
-  const [e, career, latest, geepee] = await Promise.all([getSetting('executive'), getTimeline('chris'), listPublished({ take: 3 }), db.article.count({ where: { slug: 'geepee-tanks-partnership', status: 'PUBLISHED' } })]);
+  const [e, career, latest] = await Promise.all([getSetting('executive'), getTimeline('chris'), listPublished({ take: 3 })]);
   const journey = career.filter((x) => x.kind === 'CAREER');
   const [first, ...rest] = e.name.split(' ');
   return (
@@ -30,15 +30,15 @@ export default async function ChrisPage() {
         <SocialLinks links={e} className="w-full" />
       </PageHead>
 
-      <section className="bg-umber on-dark section overflow-hidden">
+      <section className="bg-white section overflow-hidden">
         <div className="container-x">
           <R><p className="display-xl !text-[clamp(2.4rem,7vw,6rem)] max-w-6xl">{e.strapline.split('. ').map((s, i, a) => (i === a.length - 1 ? <em key={i}>{s}</em> : <span key={i}>{s}. </span>))}</p></R>
         </div>
       </section>
 
       {e.sections.map((s, i) => (
-        <Band key={s.id} n={`0${i + 2}`} marker={s.title} tone={i % 2 ? 'ivory' : 'white'}>
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 items-start">
+        <Band key={s.id} n={`0${i + 2}`} marker={s.title} tone="white">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-24 items-start">
             <R className="lg:col-span-5"><h2 className="lg:sticky lg:top-28">{s.title}</h2></R>
             <R delay={100} className="lg:col-span-7">
               <p className="lead-serif">{s.body}</p>
@@ -49,20 +49,20 @@ export default async function ChrisPage() {
       ))}
 
       {e.principles.length > 0 && (
-        <Band n="05" marker="Philosophy" tone="sand" title={<>How Chris <em>thinks about it.</em></>}>
+        <Band n="05" marker="Philosophy" title={<>How Chris <em>thinks about it.</em></>}>
           <ul className="grid gap-10 md:grid-cols-2">
-            {e.principles.map((p, i) => <li key={p.title}><R delay={i * 80}><div className="border-t-2 border-charcoal pt-5"><h3 className="serif !text-[1.6rem] !font-normal">{p.title}</h3><p className="mt-3 text-steel">{p.body}</p></div></R></li>)}
+            {e.principles.map((p, i) => <li key={p.title}><R delay={i * 80}><div className="border-t-2 border-charcoal pt-5"><h3 className="serif !text-[1.06rem]">{p.title}</h3><p className="mt-3 text-steel">{p.body}</p></div></R></li>)}
           </ul>
         </Band>
       )}
 
       {journey.length > 0 && (
-        <Band n="06" marker="Career journey" tone="ivory" title={<>A career, <em>in order.</em></>}>
+        <Band n="06" marker="Career journey" title={<>A career, <em>in order.</em></>}>
           <ol className="timeline max-w-3xl">
             {journey.map((x) => (
               <li key={x.id}><R>
                 {x.period && <p className="mono text-sm text-ember">{x.period}</p>}
-                <h3 className="serif !text-[1.5rem] !font-normal mt-1">{x.title}</h3>
+                <h3 className="serif !text-[1.00rem] mt-1">{x.title}</h3>
                 {x.body && <p className="mt-2 text-steel max-w-xl">{x.body}</p>}
               </R></li>
             ))}
@@ -72,24 +72,24 @@ export default async function ChrisPage() {
 
       <Band n="07" marker="Partnerships and the business" tone="white" title={<>The man, <em>the business.</em></>} intro="Chris leads St. Chris Global, and builds it through long-term partnerships. See what the company does, and how to work with it.">
         <div className="grid gap-px bg-line border border-line md:grid-cols-3">
-          {[['/divisions', 'Our divisions', 'Six areas of business, each with its own page and enquiry route.'], ['/opportunities', 'Opportunities', 'Partnerships, distribution, procurement, investment and careers.'], geepee ? ['/partnerships/geepee-tanks', 'The GeePee Tanks partnership', 'A long-running business partnership, told in full.'] : ['/journal', 'The journal', 'Writing on leadership, enterprise and partnership.']].map(([h, t, d]) => (
+          {[['/divisions', 'Our divisions', 'Six areas of business, each with its own page and enquiry route.'], ['/opportunities', 'Opportunities', 'Partnerships, distribution, procurement, investment and careers.'], ['/partnerships/geepee', 'The GeePee partnership', 'St. Chris Global is a major distributor and strategic partner of GeePee Water Tanks, Africa\'s No. 1 Water Tank Manufacturer.']].map(([h, t, d]) => (
             <Link key={h} href={h!} className="group ed-card bg-white p-8 md:p-10 flex flex-col"><h3>{t}</h3><p className="mt-3 text-steel flex-1">{d}</p><span className="mt-6 link-arrow !min-h-0">Open <Icon name="arrow" size={18} /></span></Link>
           ))}
         </div>
       </Band>
 
       {latest.items.length > 0 && (
-        <Band n="08" marker="Latest writing" tone="sand" title={<>Recent <em>articles.</em></>}>
+        <Band n="08" marker="Latest writing" title={<>Recent <em>articles.</em></>}>
           <div className="grid gap-x-10 gap-y-14 md:grid-cols-3">{latest.items.map((a) => <ArticleCard key={a.id} a={a} />)}</div>
         </Band>
       )}
 
-      <section className="bg-umber on-dark section">
+      <section className="bg-white section">
         <div className="container-x grid gap-10 lg:grid-cols-[1.4fr_1fr] items-end">
-          <R><Marker label="Work with Chris" /><h2 className="mt-8 text-[clamp(2rem,4.8vw,3.8rem)] leading-[1.05] tracking-tight">Start a <em>conversation.</em></h2></R>
+          <R><Marker label="Work with Chris" /><h2 className="mt-10 text-[clamp(1.9rem,3.6vw,3rem)] leading-[1.08]">Start a <em>conversation.</em></h2></R>
           <R delay={120} className="flex flex-wrap gap-3 lg:justify-end">
             <Link href="/request?service=media-speaking" className="btn btn-primary">Media or speaking request</Link>
-            <Link href="/request?service=partnership-proposal" className="btn btn-ghost-light">Propose a partnership</Link>
+            <Link href="/request?service=partnership-proposal" className="btn btn-outline">Propose a partnership</Link>
           </R>
         </div>
       </section>

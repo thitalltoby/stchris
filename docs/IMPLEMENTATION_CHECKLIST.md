@@ -8,14 +8,14 @@ Status key — **T** implemented and tested · **I** implemented but testing inc
 
 | Requirement | Status | Evidence / note |
 |---|---|---|
-| Home, catalogue, category, product, search, services (7 request types), About, Sweethome, How quotations work, Contact, Privacy, Terms, sign-in/up pages | **T** | Every page renders with no console errors and exactly one `h1` (browser) |
+| Home, catalogue, category, product, search, services (7 request types), About, GeePee partnership, How quotations work, Contact, Privacy, Terms, sign-in/up pages | **T** | Every page renders with no console errors and exactly one `h1` (browser) |
 | Site's own 404 and error pages | **T** | Unknown product, category and unmatched paths return 404 with a way back (browser) |
 | Catalogue: 11 categories, products, sizes, search over names, summaries, brands and SKUs | **T** | Integration and browser tests. Only 3 products exist until staff add more (see D7) |
 | Internal price book never public | **T** | Integration test over every public read; browser test searches pages for `₦` |
 | Project list (server-side, survives reload, merges into the account at sign-in, 150-line cap) | **T** | Integration and browser tests |
 | Responsive layout | **I** | No sideways scrolling on 13 pages at Pixel 7 size; tap-target checks. Not checked on real devices |
 | Accessibility (WCAG 2.2 AA intent) | **I** | axe-core: no serious or critical findings on 8 key pages. No manual or screen-reader pass |
-| Brand: logo, orange palette, TT Firs Neue (licensed, **not bundled**; Figtree/IBM Plex fallback) | **B** | Implemented from the supplied logo; font files and brand guidelines outstanding |
+| Brand: logo, orange palette, wide headline face + grotesque text (licensed brand fonts switch on from public/fonts), Apple system font fallback | **B** | Implemented from the supplied logo; font files and brand guidelines outstanding |
 | Claims limited to supplied material, hedged and flagged | **B** | `docs/CONTENT_REGISTER.md` |
 | Contact details | **B** | None supplied, so none shown |
 | SEO basics: titles, descriptions, sitemap, robots | **T** | Sitemap lists catalogue and product pages and excludes private areas. No structured data |

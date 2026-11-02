@@ -28,19 +28,18 @@ export function PageHero({ eyebrow, title, children, photo, compact = false }: {
  * Page section. Header sits in a two-column grid on wide screens: heading left, introduction right.
  * 'tint' stays pure white and is separated from its neighbours by a hairline.
  */
-export function Section({ eyebrow, title, intro, children, tone = 'plain', id }: { eyebrow?: string; title?: string; intro?: ReactNode; children: ReactNode; tone?: 'plain' | 'tint' | 'dark'; id?: string }) {
-  const bg = tone === 'tint' ? 'bg-ivory border-t border-line' : tone === 'dark' ? 'bg-charcoal text-paper' : 'bg-white';
-  const dark = tone === 'dark';
+export function Section({ eyebrow, title, intro, children, tone = 'plain', id }: { eyebrow?: string; title?: string; intro?: ReactNode; children: ReactNode; tone?: 'plain' | 'tint'; id?: string }) {
+  const bg = tone === 'tint' ? 'bg-white border-t border-line' : 'bg-white';
   return (
     <section id={id} className={`${bg} section`}>
       <div className="container-x">
         {(eyebrow || title || intro) && (
-          <header className="mb-10 md:mb-14 grid gap-4 lg:grid-cols-12 lg:gap-x-12 lg:items-end">
+          <header className="mb-14 md:mb-20 grid gap-6 lg:grid-cols-12 lg:gap-x-16 lg:items-end">
             <div className="lg:col-span-7">
-              {eyebrow && <p className={`eyebrow mb-3 ${dark ? '!text-brand-light' : ''}`}>{eyebrow}</p>}
-              {title && <h2 className={dark ? '!text-white' : ''}>{title}</h2>}
+              {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+              {title && <h2>{title}</h2>}
             </div>
-            {intro && <div className={`lg:col-span-5 text-lg leading-relaxed ${dark ? 'text-paper/80' : 'text-[#3b3e44]'}`}>{intro}</div>}
+            {intro && <div className={`lg:col-span-5 text-lg leading-relaxed text-[#3b3e44]`}>{intro}</div>}
           </header>
         )}
         {children}
@@ -49,14 +48,14 @@ export function Section({ eyebrow, title, intro, children, tone = 'plain', id }:
   );
 }
 
-/** Closing call to action: ember-on-white would fail contrast, so it is a charcoal band with the brand orange button. */
+/** Closing call to action: white, with the brand orange button. */
 export function RequestCta({ title = 'Start a project list', text = 'Add what you need from the catalogue, or describe it in your own words. We reply with a written quotation, and you can accept it online.', href = '/list', label = 'Open my project list' }: { title?: string; text?: string; href?: string; label?: string }) {
   return (
-    <section className="bg-umber text-white border-t-4 border-brand">
-      <div className="container-x section grid gap-8 md:grid-cols-[1fr_auto] items-end">
+    <section className="bg-white border-t border-line">
+      <div className="container-x section grid gap-10 md:grid-cols-[1fr_auto] items-end">
         <div>
-          <h2 className="!text-white max-w-2xl">{title}</h2>
-          <p className="mt-4 text-white/85 max-w-xl text-lg">{text}</p>
+          <h2 className="max-w-2xl">{title}</h2>
+          <p className="mt-6 text-[#3b3e44] max-w-xl text-lg leading-relaxed">{text}</p>
         </div>
         <Link href={href} className="btn btn-primary !min-h-[3.25rem] !px-7 text-base">{label} <Icon name="arrow" size={18} /></Link>
       </div>

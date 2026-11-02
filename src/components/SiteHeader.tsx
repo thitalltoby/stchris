@@ -1,3 +1,4 @@
+import { GEEPEE } from '@/content/geepee';
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { Icon } from './Icon';
@@ -18,12 +19,14 @@ export async function SiteHeader() {
   const nav = buildNav({ categories: cats, divisions, journalCategories: jcats, geepeeLive: geepee > 0 });
   return (
     <header className="bg-white border-b border-line sticky top-0 z-40 no-print">
-      <div className="bg-umber text-paper/90 text-xs hidden md:block">
-        <div className="container-x flex items-center justify-between py-1.5 min-w-0">
-          <span className="eyebrow !text-paper/70 !tracking-[0.12em] truncate">{company.tagline}</span>
+      <div className="bg-sand border-b border-line text-charcoal text-xs hidden md:block">
+        <div className="container-x flex items-center justify-between py-2.5 min-w-0">
+          <Link href={GEEPEE.hub} className="topbar-partner !text-charcoal no-underline hover:!text-ember truncate">
+            <span className="topbar-dot" aria-hidden="true" /><strong className="font-bold">Major distributor &amp; strategic partner of GeePee Water Tanks</strong><span className="hidden lg:inline">, {GEEPEE.claim}</span>
+          </Link>
           <span className="flex gap-5 mono flex-none whitespace-nowrap pl-6">
-            {company.phone && <a className="!text-paper/90 no-underline hover:!text-white" href={`tel:${company.phone.replace(/[^+\d]/g, '')}`}>{company.phone}</a>}
-            <a className="!text-paper/90 no-underline hover:!text-white" href="https://sweethomebathrooms.com" rel="noopener noreferrer">Shop retail at Sweethome</a>
+            {company.phone && <a className="!text-charcoal no-underline hover:!text-ember" href={`tel:${company.phone.replace(/[^+\d]/g, '')}`}>{company.phone}</a>}
+            <Link className="!text-charcoal no-underline hover:!text-ember" href="/request?service=materials-quotation">Request a quotation</Link>
           </span>
         </div>
       </div>
@@ -36,7 +39,7 @@ export async function SiteHeader() {
           <span className="hidden sm:inline-flex xl:inline-flex"><Link href={account.href} className="btn btn-outline btn-sm">{account.label}</Link></span>
           <Link href="/list" className="btn btn-primary btn-sm whitespace-nowrap md:!min-h-[2.75rem] md:!px-5">
             <Icon name="list" size={18} />Project list
-            <span className="mono ml-0.5 inline-grid place-items-center min-w-[1.4rem] h-[1.4rem] rounded-full bg-umber text-white text-xs px-1" data-testid="list-count" aria-label={`${list.count} ${list.count === 1 ? 'line' : 'lines'} on your list`}>{list.count}</span>
+            <span className="mono ml-0.5 inline-grid place-items-center min-w-[1.4rem] h-[1.4rem] rounded-full bg-ember text-white text-xs px-1" data-testid="list-count" aria-label={`${list.count} ${list.count === 1 ? 'line' : 'lines'} on your list`}>{list.count}</span>
           </Link>
         </div>
       </div>

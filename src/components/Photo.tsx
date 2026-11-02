@@ -5,7 +5,7 @@ import { isServable } from '@/server/scan';
 import { PHOTO_ALT } from '@/content/photos';
 
 /** Where to anchor a crop so the subject stays in frame. Product photographs on white are shown whole ("contain"). */
-const POSITION: Record<string, string> = { 'chris-portrait': 'center 22%', 'leadership-meeting': 'center 40%', 'bathroom-suite': 'center 60%', 'tiles-lobby': 'center 55%', 'tiles-living': 'center 60%', 'showroom': 'center 65%', 'warehouse-pallets': 'center 55%', 'bathroom-shower-heater': 'center 45%' };
+const POSITION: Record<string, string> = { 'chris-portrait': 'center 22%', 'leadership-meeting': 'center 40%', 'bathroom-suite': 'center 60%', 'tiles-lobby': 'center 55%', 'tiles-living': 'center 60%', 'showroom': 'center 65%', 'warehouse-pallets': 'center 55%', 'bathroom-shower-heater': 'center 45%', 'executive-laptop': '28% center', 'executive-desk': 'center 42%', 'boardroom-presenter': 'center 35%', 'boardroom-team': 'center 55%', 'site-rebar': '55% center', 'site-framing': '45% center', 'container-trailer': 'center 35%', 'bathroom-stone': 'center 60%', 'shower-gold': 'center 45%', 'office-laptops': 'center 55%' };
 const PRODUCT_SHOTS = new Set(['tank-black-1', 'tank-black-2', 'tank-black-3', 'tank-black-4', 'tank-black-5', 'tank-black-6', 'tank-blue', 'basin-mixer']);
 
 /** A photo by supplied key ("tank-blue") or library reference ("media:<id>"). A library photo that is missing or held back by the scan shows the plain brand block instead. */
@@ -22,7 +22,7 @@ export async function Photo({ name, className = '', sizes = '(min-width: 1024px)
   if (!name) {
     return (
       <div className={`photo-frame ${className}`} aria-hidden="true">
-        <div className="absolute inset-0 bg-umber" />
+        <div className="absolute inset-0 bg-sand" />
         <div className="tiers absolute bottom-6 left-6 w-24"><span /><span /><span /></div>
       </div>
     );

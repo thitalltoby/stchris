@@ -4,8 +4,9 @@
 # Limits: the site sleeps after ~15 idle minutes (first visit then takes about a minute), uploaded files
 # are lost on every redeploy, email is off and background jobs do not run. For the real site use
 # deploy/render.paid.yaml.
-# The database is external (e.g. a free Neon project), because a Render workspace can only have one
-# free database: set DATABASE_URL to its direct (non-pooled) connection string.
+# The database is external (e.g. a free Supabase or Neon project), because a Render workspace can only have one
+# free database. For Supabase use the Session pooler string (port 5432): the direct one is IPv6-only and Render
+# has no outbound IPv6, and the Transaction pooler (port 6543) cannot run migrations. For Neon use the direct string.
 
 services:
   - type: web

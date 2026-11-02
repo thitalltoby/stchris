@@ -88,5 +88,5 @@ export function ConsentAnalytics({ cfg }: { cfg: Cfg }) {
 }
 
 export function CookieSettingsButton() {
-  return <button type="button" className="foot-link !text-paper/80 hover:underline" onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))}>Cookie settings</button>;
+  return <button type="button" className="foot-link !text-[#3b3e44] hover:!text-ember hover:underline" onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))}>Cookie settings</button>;
 }

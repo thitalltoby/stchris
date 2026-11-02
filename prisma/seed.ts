@@ -6,6 +6,7 @@ import { CATEGORIES, BRANDS, PRODUCTS, SERVICES, FAQS, FACTS } from '../src/cont
 import { DEFAULTS } from '../src/server/settings-defaults';
 import { JOURNAL_CATEGORIES } from '../src/content/journal';
 import { SERVICE_ROUTING, PLATFORM_SERVICES, DIVISIONS, GEEPEE_BODY, GEEPEE_SLUG, GEEPEE_TITLE } from '../src/content/seed-platform';
+import { REVISIONS, REVISION_KEY, FAQ_REVISION, revisionHash } from './seed-revisions';
 
 const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL! }) });
 
@@ -17,7 +18,7 @@ async function main() {
   }
   for (const b of BRANDS) {
     if (await db.brand.findUnique({ where: { slug: b.slug } })) continue;
-    await db.brand.create({ data: { slug: b.slug, name: b.name, note: b.note, visible: false } });
+    await db.brand.create({ data: { slug: b.slug, name: b.name, note: b.note, visible: b.visible ?? false } });
   }
   for (const p of PRODUCTS) {
     if (await db.product.findUnique({ where: { slug: p.slug } })) continue;
@@ -53,6 +54,7 @@ async function main() {
   if ((await db.faq.count()) === 0) {
     await db.faq.createMany({ data: FAQS.map((f, i) => ({ ...f, sortOrder: i })) });
   }
+  await applyRevisions();
   const settings: Record<string, unknown> = { company: DEFAULTS.company, quotes: DEFAULTS.quotes, notifications: DEFAULTS.notifications, security: { requireStaffMfa: process.env.NODE_ENV === 'production' }, facts: FACTS, departments: DEFAULTS.departments, executive: DEFAULTS.executive, seo: DEFAULTS.seo };
   for (const [key, value] of Object.entries(settings)) {
     await db.siteSetting.upsert({ where: { key }, create: { key, value: value as any }, update: {} });
@@ -89,6 +91,29 @@ async function main() {
     console.log('Development staff accounts created (password DevPassword-123).');
   }
   console.log('Seed complete.');
+}
+
+/** Brings a database seeded before the November 2026 redesign up to the new defaults, once, without touching console edits (see seed-revisions.ts) */
+async function applyRevisions() {
+  if (await db.siteSetting.findUnique({ where: { key: REVISION_KEY } })) return;
+  const defaults: Record<string, readonly { slug: string }[]> = { category: CATEGORIES, brand: BRANDS, service: [...SERVICES, ...PLATFORM_SERVICES], division: DIVISIONS };
+  const delegates = { category: db.category, brand: db.brand, service: db.service, division: db.division } as Record<string, any>;
+  let changed = 0;
+  for (const r of REVISIONS) {
+    const row = await delegates[r.model].findUnique({ where: { slug: r.slug } });
+    const next = (defaults[r.model]!.find((d) => d.slug === r.slug) as Record<string, unknown> | undefined)?.[r.field];
+    if (!row || next === undefined || revisionHash(row[r.field]) !== r.from) continue;
+    await delegates[r.model].update({ where: { slug: r.slug }, data: { [r.field]: next } });
+    changed++;
+  }
+  const faq = (await db.faq.findMany()).find((f) => revisionHash(f.question) === FAQ_REVISION.from);
+  const replacement = FAQS.find((f) => f.question === FAQ_REVISION.to);
+  if (faq && replacement && !(await db.faq.findFirst({ where: { question: replacement.question } }))) {
+    await db.faq.update({ where: { id: faq.id }, data: replacement });
+    changed++;
+  }
+  await db.siteSetting.create({ data: { key: REVISION_KEY, value: { appliedAt: new Date().toISOString(), changed } } });
+  if (changed) console.log(`Updated ${changed} records to the November 2026 defaults.`);
 }
 
 async function upsertUser(email: string, name: string, role: 'SUPER_ADMIN' | 'OPS_ADMIN' | 'OPS_STAFF' | 'COMMERCIAL' | 'APPROVER' | 'CONTENT_MANAGER' | 'COMMUNICATIONS' | 'STAFF_MEMBER', password: string) {

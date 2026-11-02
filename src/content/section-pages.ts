@@ -1,5 +1,5 @@
 /**
- * Editable website pages (About, Sweethome, How quotations work). The default text is drawn from the supplied
+ * Editable website pages (About, How quotations work). The default text is drawn from the supplied
  * Corporate Profile or describes how this platform works. It states no figure, date, address, price, partner or policy
  * that the profile does not give. Staff can edit every page in the console (Content → Pages) once St. Chris has
  * confirmed what it wants to say.
@@ -33,7 +33,8 @@ We work across sourcing, importation, procurement, wholesale and retail distribu
 ## How we supply
 
 - **Wholesale and B2B distribution:** bulk sales and commercial arrangements for retailers, distributors, contractors, developers and corporate customers.
-- **Retail and B2C:** direct retail to individuals and homeowners, including through our affiliated brand [Sweethome](/sweethome).
+- **Retail and B2C:** supply to individuals and homeowners for construction, renovation and home improvement, quoted in writing like any other order.
+- **Strategic partnership:** we are a major distributor and strategic partner of GeePee Water Tanks, Africa's No. 1 Water Tank Manufacturer. See [the partnership](/partnerships/geepee).
 - **Importation and procurement:** sourcing products from local and international manufacturers and suppliers.
 - **Project and institutional supply:** structured sourcing and supply for commercial and project-based requirements.
 
@@ -60,42 +61,12 @@ To source, import, supply and distribute quality building materials, bathroom an
 We are strengthening our presence in Lagos, expanding across Nigeria, and developing selected international supplier and market relationships. The Materials Desk you are using is part of that: a clearer way to browse, list what you need, and get a written quotation.`,
   },
   {
-    path: 'sweethome',
-    title: 'Sweethome: premium bathroom and kitchen solutions',
-    navLabel: 'Sweethome',
-    eyebrow: 'Affiliated brand',
-    intro: 'Sweethome is the consumer-facing brand of the St. Chris Global group, with its own online storefront.',
-    photo: 'basins-double',
-    defaultBody: `## What Sweethome is
-
-Sweethome is an affiliated brand focused on premium bathroom and kitchen products, sanitary ware, tiles, kitchen equipment, utensils and home improvement solutions. It is positioned for customers who want products that improve the function, comfort and look of their homes and commercial spaces.
-
-St. Chris Global Limited is the overarching corporate identity; Sweethome has its own customer-facing identity and offer.
-
-## What Sweethome offers
-
-- Bathroom equipment
-- Sanitary ware
-- Wash basins and bathroom fittings
-- Kitchen equipment
-- Kitchen utensils and cookware
-- Water heaters
-- Tiles and interior solutions
-- Selected household and home improvement products
-
-## Which one should I use?
-
-**For a single purchase or a home project,** Sweethome is the retail storefront: [sweethomebathrooms.com](https://sweethomebathrooms.com).
-
-**For trade, project or bulk supply,** or for a quotation on a longer list, use this Materials Desk: [build a project list](/list).`,
-  },
-  {
     path: 'how-it-works',
     title: 'How quotations work',
     navLabel: 'How quotations work',
     eyebrow: 'The Materials Desk',
     intro: 'From a project list to a written quotation you can accept online, in four steps.',
-    photo: 'showroom',
+    photo: 'office-laptops',
     defaultBody: `## 1. Build a list
 
 Browse the catalogue and add what you need, with quantities and notes. If something is not listed, describe it in your own words. Your list saves as you go and follows you to your account if you sign in. Nothing is sent, and nothing is ordered, until you choose to send it.

@@ -16,7 +16,7 @@ export default async function SectionPagesAdmin() {
   const rows = await Promise.all(SECTION_PAGES.map(async (d) => ({ c: (await getSectionContent(d.path))!, docs: d.documents ? await listSectionDocuments(d.path, { includeHeld: true }) : [] })));
   return (
     <>
-      <PageHeader title="Section pages" eyebrow="Company pages"><p>Edit the text of About, Sweethome and How quotations work. Pages open with draft copy taken from the corporate profile; edit it once St. Chris has confirmed what it wants to say.</p></PageHeader>
+      <PageHeader title="Section pages" eyebrow="Company pages"><p>Edit the text of About and How quotations work. Pages open with draft copy taken from the corporate profile; edit it once St. Chris has confirmed what it wants to say.</p></PageHeader>
       <div className="mb-6 max-w-3xl"><Alert tone="warn">Review the draft copy before relying on it. It uses only what the corporate profile says (including the 2003 history, which the profile attributes to public company records) and states no address, telephone number, price, delivery or returns term. Add specifics only once confirmed.</Alert></div>
       <div className="space-y-4">
         {rows.map(({ c, docs }) => (

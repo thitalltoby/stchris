@@ -22,7 +22,6 @@ export function buildNav(i: NavInput): NavNode[] {
       children: [
         { label: 'Executive profile', href: '/chris-iyoha' },
         { label: 'Leadership, Career & Opportunities', href: '/leadership' },
-        ...(i.geepeeLive ? [{ label: 'The GeePee Tanks partnership', href: '/partnerships/geepee-tanks' }] : []),
       ],
     },
     {
@@ -32,7 +31,16 @@ export function buildNav(i: NavInput): NavNode[] {
         { label: 'Our divisions', href: '/divisions', children: i.divisions.map((d) => ({ label: d.name, href: `/divisions/${d.slug}` })) },
         { label: 'Catalogue', href: '/catalogue', children: i.categories.map((c) => ({ label: c.name, href: `/catalogue/${c.slug}` })) },
         { label: 'How quotations work', href: '/how-it-works' },
-        { label: 'Sweethome', href: '/sweethome' },
+      ],
+    },
+    {
+      label: 'GeePee Partnership',
+      href: '/partnerships/geepee',
+      children: [
+        { label: 'Major distributor of GeePee Water Tanks', href: '/partnerships/geepee' },
+        ...(i.geepeeLive ? [{ label: 'The partnership story', href: '/partnerships/geepee-tanks' }] : []),
+        { label: 'Water storage tanks', href: '/catalogue/water-storage-tanks' },
+        { label: 'Become a dealer', href: '/services/dealer-partnership' },
       ],
     },
     {
