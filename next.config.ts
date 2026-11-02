@@ -4,8 +4,9 @@ const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   serverExternalPackages: ['pdfkit', 'sharp', 'bcryptjs', 'nodemailer', 'pg'],
-  experimental: { serverActions: { bodySizeLimit: '55mb' } },
-  images: { formats: ['image/avif', 'image/webp'], deviceSizes: [480, 768, 1080, 1440, 1920], qualities: [85] },
+  // Resize one image at a time, in WebP only: AVIF encoding and parallel resizes ran a 512 MB instance out of memory
+  experimental: { serverActions: { bodySizeLimit: '55mb' }, imgOptConcurrency: 1 },
+  images: { formats: ['image/webp'], deviceSizes: [480, 768, 1080, 1440, 1920], qualities: [85] },
   async headers() {
     // Content-Security-Policy is set per request with a nonce in src/proxy.ts
     return [
